@@ -17,6 +17,7 @@ struct nodetype {
 	nodetype(nodetype* left, nodetype* right) : symbol(""), frequency(left->frequency + right->frequency), left(left), right(right) {}
 };
 
+// 우선순위 큐(priority queue)에서 작은 수 우선, 구조체
 struct cmp
 {
 	bool operator()(const nodetype* a, const nodetype* b)
@@ -25,6 +26,7 @@ struct cmp
 	}
 };
 
+// 허프만 인코딩
 nodetype* HuffmanTree(priority_queue<nodetype*, vector<nodetype*>, cmp>& pq)
 {
 	while (pq.size() > 1)
@@ -44,6 +46,7 @@ nodetype* HuffmanTree(priority_queue<nodetype*, vector<nodetype*>, cmp>& pq)
 	return endTree;
 }
 
+// 허프만 인코딩된 코드를 출력, Inorder Traversal 방식
 void printHuffmanTree(nodetype* T, vector<int> temp)
 {
 	if (T->left != NULL) {
@@ -57,6 +60,7 @@ void printHuffmanTree(nodetype* T, vector<int> temp)
 			cout << temp[i];
 	}
 	cout << '\n';
+	// 같은 level의 노드에서 왼쪽에서 오른쪽으로 이동할 때 왼쪽을 방문한 경우를 제거
 	temp.pop_back();
 
 	if (T->right != NULL) {
