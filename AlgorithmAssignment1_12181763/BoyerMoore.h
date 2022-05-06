@@ -44,4 +44,19 @@ int BMmatch(const string& text, const string& pattern, int prev) {
 	return -1;
 }
 
+// 문자열이 검색된 위치의 행과 열을 계산
+void calculate_rowColumn(const string& text, int foundIndex, int& row, int& column, int prev = 0) {
+	if (foundIndex == -1)		// 문자열을 검색하지 못한 경우
+		return;
+
+	int temp = 0;
+
+	for (int i = prev; i < foundIndex; i++)		// 이전에 검색된 위치(prev)에서 새롭게 검색된 위치(foundIndex)까지 행을 계산
+		if (text[i] == '\n') {
+			row++;
+			temp = i;
+		}
+	column = foundIndex - temp;		// 열을 계산
+}
+
 #endif
