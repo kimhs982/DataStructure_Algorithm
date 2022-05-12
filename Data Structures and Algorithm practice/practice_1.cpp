@@ -9,10 +9,10 @@ int main() {
 	std::array<int, 10> arr1;
 
 	arr1[0] = 1;
-	std::cout << "arr1 ¹è¿­ÀÇ Ã¹ ¹øÂ° ¿ø¼Ò: " << arr1[0] << std::endl;
+	std::cout << "arr1 ë°°ì—´ì˜ ì²« ë²ˆì§¸ ì›ì†Œ: " << arr1[0] << std::endl;
 
 	std::array<int, 4> arr2 = { 1,2,3,4 };
-	std::cout << "arr2ÀÇ ¸ğµç ¿ø¼Ò: ";
+	std::cout << "arr2ì˜ ëª¨ë“  ì›ì†Œ: ";
 
 	for (int i = 0; i < arr2.size(); i++)
 		std::cout << arr2[i] << " ";
