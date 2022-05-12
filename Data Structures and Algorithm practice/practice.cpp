@@ -13,7 +13,7 @@ int main() {
 
 	std::array<int, 4> arr2 = { 1,2,3,4 };
 	std::cout << "arr2의 모든 원소: ";
-	
+
 	for (int i = 0; i < arr2.size(); i++)
 		std::cout << arr2[i] << " ";
 	std::cout << std::endl;
@@ -30,27 +30,27 @@ int main() {
 		std::cerr << ex.what() << std::endl;
 	}
 
-	//std::array<int, 5> arr = { 1, 2, 3, 4, 5 };
-	////print(arr);
-	///*for (const auto& element : arr)
-	//{
-	//	std::cout << element << " ";
-	//}*/
-	////for (auto it = arr.begin(); it != arr.end(); it++)
-	////{
-	////	//std::cout << typeid(it).name() << std::endl;
-	////	auto element = (*it);
-	////	std::cout << element << ' ';
-	////}
-	//std::cout << arr.front() << std::endl;
-	//std::cout << arr.back() << std::endl;
-	//std::cout << *(arr.data() + 1) << std::endl;
+	std::array<int, 5> arr = { 1,2,3,4,5 };
+	//print(arr);
+	/*for (auto element : arr)
+		std::cout << element << ' ';*/
+	for (auto it = arr.begin(); it != arr.end(); it++)
+	{
+		//std::cout << typeid(it).name() << std::endl;
+		auto element = (*it);
+		std::cout << element << ' ';
+	}
+	std::cout << '\n';
+	
+	std::cout << arr.front() << std::endl;
+	std::cout << arr.back() << std::endl;
+	std::cout << *(arr.data() + 1) << std::endl;
 
 	return 0;
 }
 
 template <size_t N>
-void print(const std::array<int, N>& arr)
+void print(std::array<int, N>& arr)
 {
 	for (auto ele : arr)
 		std::cout << ele << ", ";
