@@ -27,4 +27,22 @@ int Knapsack(vector<pair<int, int>>& jewelList, int W) {
 	return P[jewel_num - 1][W];
 }
 
+// Knapsack 개량 알고리즘, index번째 & 배낭의 최대 용량 weight
+int Knapsack_improve(vector<pair<int, int>>& jewelList, int index, int weight) {
+	if ((index == 1) || (weight <= 0)) {
+		if (weight <= 0)
+			return 0;
+		else if (jewelList[index].first <= weight)
+			return jewelList[index].second;
+		else
+			return 0;
+	}
+	else {
+		if (jewelList[index].first <= weight)
+			return max(Knapsack_improve(jewelList, index - 1, weight), jewelList[index].second + Knapsack_improve(jewelList, index - 1, weight - jewelList[index].first));
+		else
+			return Knapsack_improve(jewelList, index - 1, weight);
+	}
+}
+
 #endif

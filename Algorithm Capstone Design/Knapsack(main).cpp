@@ -15,8 +15,10 @@ int main() {
 	vector<pair<int, int>> input1 = { {0, 0}, {5, 5}, {10, 7}, {7, 10}, {3, 6}, {4, 8}, {11, 20} };
 	vector<pair<int, int>> input2 = { {0, 0}, {3, 5}, {7, 7}, {8, 10}, {5, 6}, {6, 8}, {13, 20}, {11, 18}, {2, 5} };
 
-	cout << "입력 1에 대하여 가방에 담은 보석의 최대 가치: " << Knapsack(input1, W1) << '\n';
-	cout << "입력 2에 대하여 가방에 담은 보석의 최대 가치: " << Knapsack(input2, W2) << '\n';
+	/*cout << "입력 1에 대하여 가방에 담은 보석의 최대 가치: " << Knapsack(input1, W1) << '\n';
+	cout << "입력 2에 대하여 가방에 담은 보석의 최대 가치: " << Knapsack(input2, W2) << '\n';*/
+	cout << "입력 1에 대하여 가방에 담은 보석의 최대 가치: " << Knapsack_improve(input1, input1.size() - 1, W1) << '\n';
+	cout << "입력 2에 대하여 가방에 담은 보석의 최대 가치: " << Knapsack_improve(input2, input2.size() - 1, W2) << '\n';
 
 	return 0;
 }
