@@ -1,3 +1,4 @@
+#include <ctime>
 #include "TSP.h"
 
 void print_graph(const vector<vector<int>>&);
@@ -5,6 +6,8 @@ void print_graph(const vector<vector<int>>&);
 int main()
 {
 	int min_lenNaive, min_lenDP;
+	clock_t start, end;
+
 	vector<vector<int>> graph1 =
 	{
 		{0, 2, 9, INF},
@@ -40,53 +43,71 @@ int main()
 	TSP G2(graph2);
 	TSP G3(graph3);
 
-	cout << "그래프 1\n";
+	cout << "그래프 1(정점 4개)\n";
 	print_graph(graph1);
 	cout << '\n';
 
+	start = clock();
 	min_lenNaive = G1.TSP_naive();
+	end = clock();
 	cout << "TSP(Naive)\n";
 	cout << "최단 경로의 길이: " << min_lenNaive << '\n';
 	cout << "최소 일주경로: ";
 	G1.print_pathNaive();
+	cout << "수행시간 : " << end - start << "ms\n";
 
+	start = clock();
 	min_lenDP = G1.TSP_DP();
+	end = clock();
 	cout << "\nTSP(DP)\n";
 	cout << "최단 경로의 길이: " << min_lenDP << '\n';
 	cout << "최소 일주경로: ";
 	G1.print_pathDP(min_lenDP);
+	cout << "수행시간 : " << end - start << "ms\n";
 
-	cout << "\n그래프 2\n";
+	cout << "\n그래프 2(정점 5개)\n";
 	print_graph(graph2);
 	cout << '\n';
 
+	start = clock();
 	min_lenNaive = G2.TSP_naive();
+	end = clock();
 	cout << "TSP(Naive)\n";
 	cout << "최단 경로의 길이: " << min_lenNaive << '\n';
 	cout << "최소 일주경로: ";
 	G2.print_pathNaive();
+	cout << "수행시간 : " << end - start << "ms\n";
 
+	start = clock();
 	min_lenDP = G2.TSP_DP();
+	end = clock();
 	cout << "\nTSP(DP)\n";
 	cout << "최단 경로의 길이: " << min_lenDP << '\n';
 	cout << "최소 일주경로: ";
 	G2.print_pathDP(min_lenDP);
+	cout << "수행시간 : " << end - start << "ms\n";
 
-	cout << "\n그래프 3\n";
+	cout << "\n그래프 3(정점 10개)\n";
 	print_graph(graph3);
 	cout << '\n';
 
+	start = clock();
 	min_lenNaive = G3.TSP_naive();
+	end = clock();
 	cout << "TSP(Naive)\n";
 	cout << "최단 경로의 길이: " << min_lenNaive << '\n';
 	cout << "최소 일주경로: ";
 	G3.print_pathNaive();
+	cout << "수행시간 : " << end - start << "ms\n";
 
+	start = clock();
 	min_lenDP = G3.TSP_DP();
+	end = clock();
 	cout << "\nTSP(DP)\n";
 	cout << "최단 경로의 길이: " << min_lenDP << '\n';
 	cout << "최소 일주경로: ";
 	G3.print_pathDP(min_lenDP);
+	cout << "수행시간 : " << end - start << "ms\n";
 
 	return 0;
 }
