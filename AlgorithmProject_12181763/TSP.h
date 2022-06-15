@@ -4,15 +4,33 @@
 #define INF 999
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
+#include <utility>
+#include <cstdlib>
 
 using namespace std;
 
-int TSP_Naive(const vector<vector<int>>&, vector<int>&, int = 0);
-int TSP_DP(const vector<vector<int>>&, vector<int>&);
-
-void print_graph(const vector<vector<int>>&);
-void print_pathNaive(const vector<int>&);
-void print_pathDP(const vector<vector<int>>&);
+class TSP {
+public:
+	TSP(const vector<vector<int>>&);
+	// TSP Naive
+	int TSP_naive(int = 0);
+	void print_pathNaive();
+	// TSP DP(Dynamic Programming)
+	int TSP_DP(int = 0, int = 0);
+	void print_pathDP(int);
+private:
+	const vector<vector<int>>& W;
+	const int V_num;
+	// TSP Naive
+	int min_lenNaive;
+	vector<bool> visitedList;
+	vector<int> temp_pathNaive;
+	vector<int> pathNaive;
+	// TSP DP
+	vector<vector<int>> D;
+	vector<int> pathDP;
+};
 
 #endif
