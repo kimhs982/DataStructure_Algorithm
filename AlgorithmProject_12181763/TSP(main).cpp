@@ -1,5 +1,5 @@
-#include <ctime>
 #include "TSP.h"
+#include "TSP_GA.h"
 
 void print_graph(const vector<vector<int>>&);
 
@@ -39,9 +39,20 @@ int main()
 		{67, 38, 72, 26, 13, 12, 48, 55, 10, 0}
 	};
 
+	vector<vector<int>> graph4;
+	vector<int> temp;
+	for (int i = 0; i < 15; i++) {
+		temp.clear();
+		for (int j = 0; j < 15; j++)
+			temp.push_back(rand() % 15 + 1);
+		temp[i] = 0;
+		graph4.push_back(temp);
+	}
+
 	TSP G1(graph1);
 	TSP G2(graph2);
 	TSP G3(graph3);
+	TSP G4(graph4);
 
 	cout << "그래프 1(정점 4개)\n";
 	print_graph(graph1);
@@ -54,7 +65,7 @@ int main()
 	cout << "최단 경로의 길이: " << min_lenNaive << '\n';
 	cout << "최소 일주경로: ";
 	G1.print_pathNaive();
-	cout << "수행시간 : " << end - start << "ms\n";
+	cout << "수행시간: " << end - start << "ms\n";
 
 	start = clock();
 	min_lenDP = G1.TSP_DP();
@@ -63,7 +74,12 @@ int main()
 	cout << "최단 경로의 길이: " << min_lenDP << '\n';
 	cout << "최소 일주경로: ";
 	G1.print_pathDP(min_lenDP);
-	cout << "수행시간 : " << end - start << "ms\n";
+	cout << "수행시간: " << end - start << "ms\n";
+
+	TSP_GA GA1(graph1, min_lenDP);
+	cout << "\nTSP(GA)\n";
+	GA1.TSP_ga();
+
 
 	cout << "\n그래프 2(정점 5개)\n";
 	print_graph(graph2);
@@ -76,7 +92,7 @@ int main()
 	cout << "최단 경로의 길이: " << min_lenNaive << '\n';
 	cout << "최소 일주경로: ";
 	G2.print_pathNaive();
-	cout << "수행시간 : " << end - start << "ms\n";
+	cout << "수행시간: " << end - start << "ms\n";
 
 	start = clock();
 	min_lenDP = G2.TSP_DP();
@@ -85,7 +101,11 @@ int main()
 	cout << "최단 경로의 길이: " << min_lenDP << '\n';
 	cout << "최소 일주경로: ";
 	G2.print_pathDP(min_lenDP);
-	cout << "수행시간 : " << end - start << "ms\n";
+	cout << "수행시간: " << end - start << "ms\n";
+
+	TSP_GA GA2(graph2, min_lenDP);
+	cout << "\nTSP(GA)\n";
+	GA2.TSP_ga();
 
 	cout << "\n그래프 3(정점 10개)\n";
 	print_graph(graph3);
@@ -98,7 +118,7 @@ int main()
 	cout << "최단 경로의 길이: " << min_lenNaive << '\n';
 	cout << "최소 일주경로: ";
 	G3.print_pathNaive();
-	cout << "수행시간 : " << end - start << "ms\n";
+	cout << "수행시간: " << end - start << "ms\n";
 
 	start = clock();
 	min_lenDP = G3.TSP_DP();
@@ -107,7 +127,28 @@ int main()
 	cout << "최단 경로의 길이: " << min_lenDP << '\n';
 	cout << "최소 일주경로: ";
 	G3.print_pathDP(min_lenDP);
-	cout << "수행시간 : " << end - start << "ms\n";
+	cout << "수행시간: " << end - start << "ms\n";
+
+	TSP_GA GA3(graph3, min_lenDP);
+	cout << "\nTSP(GA)\n";
+	GA3.TSP_ga();
+
+	cout << "\n그래프 4(정점 15개)\n";
+	print_graph(graph4);
+	cout << '\n';
+
+	start = clock();
+	min_lenDP = G4.TSP_DP();
+	end = clock();
+	cout << "\nTSP(DP)\n";
+	cout << "최단 경로의 길이: " << min_lenDP << '\n';
+	cout << "최소 일주경로: ";
+	G4.print_pathDP(min_lenDP);
+	cout << "수행시간: " << end - start << "ms\n";
+
+	TSP_GA GA4(graph4, min_lenDP);
+	cout << "\nTSP(GA)\n";
+	GA4.TSP_ga();
 
 	return 0;
 }
