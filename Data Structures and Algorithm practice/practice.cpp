@@ -1,4 +1,5 @@
-#include <iostream>
+//1.3
+/*#include <iostream>
 #include <array>
 #include <typeinfo>
 
@@ -32,8 +33,8 @@ int main() {
 
 	std::array<int, 5> arr = { 1,2,3,4,5 };
 	//print(arr);
-	/*for (auto element : arr)
-		std::cout << element << ' ';*/
+	//for (auto element : arr)
+		//std::cout << element << ' ';
 	for (auto it = arr.begin(); it != arr.end(); it++)
 	{
 		//std::cout << typeid(it).name() << std::endl;
@@ -41,7 +42,7 @@ int main() {
 		std::cout << element << ' ';
 	}
 	std::cout << '\n';
-	
+
 	std::cout << arr.front() << std::endl;
 	std::cout << arr.back() << std::endl;
 	std::cout << *(arr.data() + 1) << std::endl;
@@ -54,4 +55,31 @@ void print(std::array<int, N>& arr)
 {
 	for (auto ele : arr)
 		std::cout << ele << ", ";
+}*/
+
+//1.4
+#include <iostream>
+#include <vector>
+
+int main() {
+	//std::vector<int> vec;
+	//std::vector<int> vec = { 1, 2, 3, 4, 5 };
+	//std::vector<int> vec(10);
+	//std::vector<int> vec(10, 5);
+
+	//std::vector<int> vec = { 1, 2, 3, 4, 5 };
+	//vec.insert(vec.begin(), 0);
+
+	//std::vector<int> vec;
+	//vec.push_back(1);
+	//vec.push_back(2);
+	//vec.insert(vec.begin(), 0);
+	//vec.insert(find(vec.begin(), vec.end(), 1) , 4);
+
+	std::vector<int> vec = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	vec.pop_back();
+	vec.erase(vec.begin());
+	vec.erase(vec.begin() + 1, vec.begin() + 4);
+
+	return 0;
 }
