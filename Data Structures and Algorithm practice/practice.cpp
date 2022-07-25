@@ -58,7 +58,7 @@ void print(std::array<int, N>& arr)
 }*/
 
 //1.4
-#include <iostream>
+/*#include <iostream>
 #include <vector>
 
 int main() {
@@ -80,6 +80,26 @@ int main() {
 	vec.pop_back();
 	vec.erase(vec.begin());
 	vec.erase(vec.begin() + 1, vec.begin() + 4);
+
+	return 0;
+}*/
+
+//1.5
+#include <forward_list>
+#include <iostream>
+
+int main() {
+	//std::forward_list<int> fwd_list = { 1, 2, 3 };
+	//fwd_list.push_front(0);
+	//auto it = fwd_list.begin();
+	//fwd_list.insert_after(it, 5);
+	//fwd_list.insert_after(it, 6);
+	
+	std::forward_list<int> fwd_list = { 1, 2, 3, 4, 5 };
+	fwd_list.pop_front();
+	auto it = fwd_list.begin();
+	fwd_list.erase_after(it);
+	fwd_list.erase_after(it, fwd_list.end());
 
 	return 0;
 }
