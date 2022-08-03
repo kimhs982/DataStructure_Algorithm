@@ -94,12 +94,25 @@ int main() {
 	//auto it = fwd_list.begin();
 	//fwd_list.insert_after(it, 5);
 	//fwd_list.insert_after(it, 6);
-	
+
 	std::forward_list<int> fwd_list = { 1, 2, 3, 4, 5 };
 	fwd_list.pop_front();
 	auto it = fwd_list.begin();
 	fwd_list.erase_after(it);
 	fwd_list.erase_after(it, fwd_list.end());
+
+	//std::forward_list<int> list1 = { 23, 0, 1, -3, 34, 32 };
+	//list1.sort();
+	//list1.sort(std::greater<int>());
+
+	std::forward_list<int> list1 = { 2, 53, 1, 0, 4, 10 };
+	list1.reverse();
+
+	list1 = { 0, 1, 0, 1, -1, 10, 5, 5, 10, 0 };
+	list1.sort();
+	list1.unique();
+
+	list1.unique([](int a, int b) {return (b - a) < 2; });
 
 	return 0;
 }
